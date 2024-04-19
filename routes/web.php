@@ -5,6 +5,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,13 @@ Route::get('/graph', function () {
     return view('cobacoba.graph');
 });
 
+// Route::get('/export', function () {
+//     return view('export');
+// });
+
 Route::get('/report', [UserController::class, 'index'])->name('report');
+Route::get('/exportPost', [ExportController::class, 'index'])->name('exportPost');
+Route::get('/exportAlbum', [ExportController::class, 'tampilan'])->name('exportAlbum');
 
 Auth::routes();
 

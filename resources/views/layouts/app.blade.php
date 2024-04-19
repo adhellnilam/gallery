@@ -32,6 +32,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
 </head>
 <body>
     <div id="app">
@@ -101,6 +103,39 @@
                                 </div>
                             </li>
 
+                            <li class="nav-item dropdown" style="margin-right: 10px">
+
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff">
+                                    Export
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <div class="profile">
+                                        <a class="dropdown-item" href="{{ route('exportPost') }}">
+                                            {{ __('Export Post') }}
+                                        </a>  
+                                        {{-- <span class="material-symbols-outlined icon">person</span>
+                                        <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
+                                    </div>
+
+                                    <div class="profile1">
+                                        <a class="dropdown-item" href="{{ route('exportAlbum') }}">
+                                            {{ __('Export Album') }}
+                                        </a> 
+                                    </div>
+
+                                    {{-- <div class="profile1">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <span class="material-symbols-outlined">logout</span> {{ __('Logout') }}
+                                        </a>     
+                                    </div>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form> --}}
+                                </div>
+                            </li>
+
                             <li class="nav-item dropdown">
 
                                 {{-- <div class="create">
@@ -127,6 +162,12 @@
                                         {{-- <span class="material-symbols-outlined icon">person</span>
                                         <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
                                     </div>
+
+                                    {{-- <div class="profile">
+                                        <a class="dropdown-item" href="{{ route('export') }}">
+                                            <span class="material-symbols-outlined">ios_share</span> {{ __('Export Data') }}
+                                         </a>  
+                                    </div> --}}
 
                                     <div class="profile1">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
