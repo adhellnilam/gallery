@@ -9,34 +9,28 @@
                <table id="example2" class="display nowrap" style="width:100%">
                   <thead>
                      <tr>
-                         <th scope="col">#</th>
-                         <th scope="col">Name</th>
-                         <th scope="col">Description</th>
-                         <th scope="col">Date Created</th>
-                         <th scope="col">Cover Image</th>
-                         <th scope="col">User</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
                      </tr>
                   </thead>
                   <tbody>
-                        @foreach($albums as $album)
+                     @foreach($users as $user)
                         <tr>
                            <th scope="row">{{ $loop->iteration }}</th>
-                           <td>{{ $album->name }}</td>
-                           <td>{{ $album->description }}</td>
-                           <td>{{ $album->datecreated }}</td>
-                           <td><img src="{{ asset('storage/album_covers/' . $album->cover_image) }}" alt="Cover" style="max-width: 100px;"></td>
-                           <td>{{ $album->user->name }}</td>
+                           <td>{{ $user->name }}</td>
+                           <td>{{ $user->email }}</td>
+                           <td>{{ $user->address }}</td>
                         </tr>
-                        @endforeach
+                     @endforeach
                   </tbody>
                   <tfoot>
                      <tr>
                         <th scope="col">#</th>
-                         <th scope="col">Name</th>
-                         <th scope="col">Description</th>
-                         <th scope="col">Date Created</th>
-                         <th scope="col">Cover Image</th>
-                         <th scope="col">User</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
                      </tr>
                   </tfoot>
                </table>
@@ -58,10 +52,10 @@
    <script>
       new DataTable('#example2', {
          layout: {
-             topStart: {
-                 buttons: ['csv', 'excel', 'pdf']
-             }
+            topStart: {
+               buttons: ['csv', 'excel', 'pdf']
+            }
          }
-     });
+   });
    </script>
 @endsection

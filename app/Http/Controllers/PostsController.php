@@ -83,6 +83,18 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+    
+        // Validasi input
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'album_id' => 'required',
+        ]);
+
+        // Simpan data lama gambar
+        $oldCover = $post->cover;
+
+        // Update data post
         $post->title = $request->input('title');
         $post->description = $request->input('description');
         $post->album_id = $request->input('album_id');
@@ -92,6 +104,11 @@ class PostsController extends Controller
             $imageName = time() . '.' . $request->cover->extension();
             $request->cover->move(public_path('images'), $imageName);
             $post->cover = $imageName;
+
+            // Hapus gambar lama
+            if ($oldCover && file_exists(public_path('images/' . $oldCover))) {
+                unlink(public_path('images/' . $oldCover));
+            }
         }
 
         $post->save();

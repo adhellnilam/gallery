@@ -27,15 +27,6 @@
                      </div>             
                      <div class="col-md-6">
                         <div class="form-group">
-                           <label for="cover">Image Cover</label>
-                           <input type="file" name="cover" class="form-control">
-                        </div>
-                     </div>
-                  </div>
-
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="form-group">
                            <label for="title">Image Title</label>
                            <input type="text" name="title" value="{{ $post->title }}" class="form-control">
                         </div>

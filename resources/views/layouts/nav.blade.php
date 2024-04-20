@@ -70,37 +70,45 @@
                             @endif
                         @else
                             <li class="nav-item dropdown" style="margin-right: 10px">
-                                <a href="{{ route('home') }}" class="buat">Home</a>
+                                <a href="{{ route('adminHome') }}" class="buat">Home</a>
 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff">
-                                    Create
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff">
+                                     Export
+                                 </a>
+ 
+                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <div class="profile">
-                                        <a class="dropdown-item" href="{{ route('posts') }}">
-                                            {{ __('Create Post') }}
-                                        </a>  
-                                        {{-- <span class="material-symbols-outlined icon">person</span>
-                                        <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
-                                    </div>
+                                       <a class="dropdown-item" href="{{ route('exportUser') }}">
+                                           {{ __('Export User') }}
+                                       </a>  
+                                       {{-- <span class="material-symbols-outlined icon">person</span>
+                                       <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
+                                   </div>
 
-                                    <div class="profile1">
-                                        <a class="dropdown-item" href="{{ route('index') }}">
-                                            {{ __('Create Album') }}
-                                        </a> 
-                                    </div>
-
-                                    {{-- <div class="profile1">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <span class="material-symbols-outlined">logout</span> {{ __('Logout') }}
-                                        </a>     
-                                    </div>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form> --}}
-                                </div>
+                                     <div class="profile">
+                                         <a class="dropdown-item" href="{{ route('exportPost') }}">
+                                             {{ __('Export Post') }}
+                                         </a>  
+                                         {{-- <span class="material-symbols-outlined icon">person</span>
+                                         <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
+                                     </div>
+ 
+                                     <div class="profile1">
+                                         <a class="dropdown-item" href="{{ route('exportAlbum') }}">
+                                             {{ __('Export Album') }}
+                                         </a> 
+                                     </div>
+ 
+                                     {{-- <div class="profile1">
+                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                             <span class="material-symbols-outlined">logout</span> {{ __('Logout') }}
+                                         </a>     
+                                     </div>
+ 
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                         @csrf
+                                     </form> --}}
+                                 </div>
                             </li>
                             
                             <li class="nav-item dropdown">
@@ -114,19 +122,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <div class="profile">
-                                        <a class="dropdown-item" href="{{ route('profile') }}">
-                                            <span class="material-symbols-outlined">person</span> {{ __('Profile') }}
-                                         </a>  
-                                        {{-- <span class="material-symbols-outlined icon">person</span>
-                                        <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
-                                    </div>
-
-                                    {{-- <div class="profile">
-                                        <a class="dropdown-item" href="{{ route('export') }}">
-                                            <span class="material-symbols-outlined">ios_share</span> {{ __('Export Data') }}
-                                         </a>  
-                                    </div> --}}
 
                                     <div class="profile1">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

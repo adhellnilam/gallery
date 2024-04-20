@@ -27,6 +27,14 @@ class UserController extends Controller
         $posts = Post::with('album', 'user')->where('user_id', auth()->user()->id)->get();
         $albums = Album::where('user_id', auth()->user()->id)->get();
 
-        return view('report', compact('loggedInUsersCount', 'userPostsCount', 'userAlbumsCount', 'posts', 'albums'));
+        return view('adminHome', compact('loggedInUsersCount', 'userPostsCount', 'userAlbumsCount', 'posts', 'albums'));
+    }
+
+    public function deleteUser($id)
+    {
+        $users = User::findOrFail($id);
+        $users->delete();
+
+        return redirect()->route('adminHome')->with('success', 'User deleted successfully');
     }
 }

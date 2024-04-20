@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +17,6 @@ class AlbumController extends Controller
     }
 
     public function index() {
-
         return view('albums.index');
     }
 
@@ -58,19 +58,11 @@ class AlbumController extends Controller
         return view('albums.show')->with('album', $album);
     }
 
-    public function destroy($id)
+    public function deleteAlbum($id)
     {
-        $album = Album::findOrFail($id);
-        // Pastikan album milik user yang sedang login
-        if ($album->user_id === auth()->id()) {
-            // Hapus cover image dari storage
-            Storage::delete('/public/storage/album_covers/'.$album->cover_image);
-            // Hapus album dari database
-            $album->delete();
-            return redirect()->back()->with('success', 'Album deleted successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Unauthorized access.');
-        }
-    }
+        $post = Album::findOrFail($id);
+        $post->delete();
 
+        return redirect()->route('adminHome')->with('success', 'Post deleted successfully');
+    }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -46,10 +48,13 @@ Route::get('/graph', function () {
 Route::get('/report', [UserController::class, 'index'])->name('report');
 Route::get('/exportPost', [ExportController::class, 'index'])->name('exportPost');
 Route::get('/exportAlbum', [ExportController::class, 'tampilan'])->name('exportAlbum');
+Route::get('/exportUser', [ExportController::class, 'display'])->name('exportUser');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/adminHome', [AdminController::class, 'index'])->name('adminHome');
+
 
 Route::get('/profile', [App\Http\Controllers\AlbumController::class, 'profile'])->name('profile');
 
@@ -68,14 +73,17 @@ Route::get('posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edi
 Route::put('posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 Route::get('/download-image/{id}', [PostsController::class, 'downloadImage'])->name('download.image');
 
-
-
 Route::get('/post/{id}', [PostsController::class, 'show'])->name('photo-show');
 Route::delete('/post/{id}',  [HomeController::class, 'hapus'])->name('photo-hapus');
 
-
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+Route::delete('/admin/posts/{id}', [AdminController::class, 'deletePost'])->name('deletePost');
+Route::delete('/admin/album/{id}', [AlbumController::class, 'deleteAlbum'])->name('deleteAlbum');
+
+Route::delete('/admin/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+
 
 
 

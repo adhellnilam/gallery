@@ -97,13 +97,13 @@
                                                                     <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger btn-xs">
+                                                                        <button type="submit" class="btn btn-danger btn-xs hapus">
                                                                             <i class="fas fa-trash"></i> <!-- Icon untuk hapus -->
                                                                         </button>
                                                                     </form>
                                                                 @endif
                                                 
-                                                                <div style="text-align: right; margin-top: -33px; margin-bottom: 10px;">
+                                                                <div style="text-align: right; margin-top: -28px; margin-bottom: 10px; font-size: 12px;">
                                                                     <span style="margin-left: auto;">by {{ $comment->user->name }}</span> |
                                                                     <span>{{ $comment->created_at->diffForHumans() }}</span>
                                                                 </div>
@@ -112,8 +112,6 @@
                                                     @endif
                                                 </div>                                                
                                             </div>
-                                                                                      
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +158,7 @@
     }
 
     .comment-body p {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 500;
         padding-bottom: 10px;
     }
