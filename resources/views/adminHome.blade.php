@@ -52,7 +52,7 @@
                            <th scope="col">Name</th>
                            <th scope="col">Email</th>
                            <th scope="col">Address</th>
-                           <th scope="col">Action</th>
+                           {{-- <th scope="col">Action</th> --}}
                         </tr>
                      </thead>
                      <tbody>
@@ -62,13 +62,13 @@
                               <td>{{ $user->name }}</td>
                               <td>{{ $user->email }}</td>
                               <td>{{ $user->address }}</td>
-                              <td>
+                              {{-- <td>
                                     <form action="{{ route('deleteUser', $user->id) }}" method="POST" style="display: inline-block;">
                                        @csrf
                                        @method('DELETE')
                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
-                              </td>
+                              </td> --}}
                            </tr>
                         @endforeach
                      </tbody>
@@ -93,6 +93,7 @@
                            <th scope="col">Cover</th>
                            <th scope="col">Album</th>
                            <th scope="col">User</th>
+                           <th scope="col">Likes Count</th>
                            <th scope="col">Action</th>
                         </tr>
                      </thead>
@@ -106,6 +107,7 @@
                            <td><img src="{{ asset('images/' . $post->cover) }}" alt="Cover" style="max-width: 100px;"></td>
                            <td>{{ $post->album->name }}</td>
                            <td>{{ $post->user->name }}</td>
+                           <td>{{ $likesCounts[$post->id] }}</td>
                            <td>
                                  <form action="{{ route('deletePost', $post->id) }}" method="POST" style="display: inline-block;">
                                     @csrf

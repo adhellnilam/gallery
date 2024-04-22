@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -23,11 +24,21 @@ class AdminController extends Controller
         $albums = Album::with('user')->get();
         $totalAlbumsCount = $albums->count();
 
-        // Mendapatkan semua user
+        // Mendapatkan total semua user
         $users = User::all();
         $totalUserCount = $users->count();
 
-        return view('adminHome', compact('loggedInUsersCount', 'totalPostsCount', 'totalUserCount', 'totalAlbumsCount', 'posts', 'albums', 'users'));
+        // Mendapatkan total likes untuk setiap postingan
+        $likesCounts = [];
+        foreach ($posts as $post) {
+            $postId = $post->id;
+            $totalLikes = $post->likes_count;
+            $likesCounts[$postId] = $totalLikes;
+        }
+
+        $users = DB::select('CALL sp_get_users()');
+
+        return view('adminHome', compact('likesCounts','totalUserCount','loggedInUsersCount', 'totalPostsCount', 'totalAlbumsCount', 'posts', 'albums', 'users'));
     }
 
     public function editPost($id)
@@ -56,4 +67,6 @@ class AdminController extends Controller
 
         return redirect()->route('adminHome')->with('success', 'Post deleted successfully');
     }
+
+
 }

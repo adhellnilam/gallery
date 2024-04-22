@@ -9,6 +9,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;   
@@ -73,6 +74,7 @@ Route::get('posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edi
 Route::put('posts/{id}', [PostsController::class, 'update'])->name('posts.update');
 Route::get('/download-image/{id}', [PostsController::class, 'downloadImage'])->name('download.image');
 
+
 Route::get('/post/{id}', [PostsController::class, 'show'])->name('photo-show');
 Route::delete('/post/{id}',  [HomeController::class, 'hapus'])->name('photo-hapus');
 
@@ -83,8 +85,14 @@ Route::delete('/admin/posts/{id}', [AdminController::class, 'deletePost'])->name
 Route::delete('/admin/album/{id}', [AlbumController::class, 'deleteAlbum'])->name('deleteAlbum');
 
 Route::delete('/admin/user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+// Route::get('/adminHome', [AdminController::class, 'showLikes']);
+
+// Route::get('/home', [HomeController::class, 'likeCount'])->name('likes');
+Route::get('/report', [ReportController::class, 'index'])->name('report');
 
 
+Route::get('/profile/edit', [UserController::class, 'edit'])->name('userEdit');
+Route::put('/profile/update', [UserController::class, 'updated'])->name('profile.update');
 
 
 // Route::group(['middlewere' => 'auth'], function(){

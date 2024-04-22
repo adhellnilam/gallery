@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PostExport;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -130,6 +131,20 @@ class PostsController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function likeCount()
+    {
+        // Mendapatkan total likes dari stored procedure
+        $likes = DB::select('CALL CalculateLikes()');
+
+        // Format hasil dari stored procedure agar sesuai dengan struktur yang diharapkan dalam view
+        $likesCounts = [];
+        foreach ($likes as $like) {
+            $likesCounts[$like->post_id] = $like->total_likes;
+        }
+
+        return view('home', compact('likesCounts'));
     }
 
 

@@ -122,6 +122,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    {{-- <div class="profile">
+                                        <a class="dropdown-item" href="{{ route('report') }}">
+                                            <span class="material-symbols-outlined">summarize</span>{{ __('Report User') }}
+                                        </a> 
+                                    </div> --}}
 
                                     <div class="profile1">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

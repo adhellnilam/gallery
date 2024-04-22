@@ -7,9 +7,11 @@
            <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="user">{{ Auth::user()->name }}</h1>
               <h5 class="email">{{ Auth::user()->email }}</h5>
+              <h5 class="address">{{ Auth::user()->address }}</h5>
+              <a href="{{ route('userEdit')}}" class="btn btn-primary my-2 upl" >Edit Profile</a>
            </div>
         </div>
-    </section>
+    </section><br>
 
     <div class="container">
         @if ($albums->where('user_id', auth()->id())->isEmpty())

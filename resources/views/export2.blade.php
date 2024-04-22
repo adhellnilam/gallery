@@ -4,7 +4,7 @@
    <div class="row justify-content-center" style="margin-top: -30px">
       <div class="col-md-12">
          <div class="card">
-            <div class="card-header">Album Table</div>
+            <div class="card-header">User Table</div>
             <div class="card-body">
                <table id="example2" class="display nowrap" style="width:100%">
                   <thead>

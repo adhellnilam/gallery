@@ -78,6 +78,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <div class="profile">
+                                        <a class="dropdown-item" href="{{ route('index') }}">
+                                            {{ __('Create Album') }}
+                                        </a> 
+                                    </div>
+
+                                    <div class="profile1">
                                         <a class="dropdown-item" href="{{ route('posts') }}">
                                             {{ __('Create Post') }}
                                         </a>  
@@ -85,11 +91,6 @@
                                         <a href="{{ route('profile') }}" class="dropdown-item profilenav">Profile</a> --}}
                                     </div>
 
-                                    <div class="profile1">
-                                        <a class="dropdown-item" href="{{ route('index') }}">
-                                            {{ __('Create Album') }}
-                                        </a> 
-                                    </div>
 
                                     {{-- <div class="profile1">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

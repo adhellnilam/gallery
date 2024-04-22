@@ -16,7 +16,8 @@ class Post extends Model
         'uploaddate', 
         'cover', 
         'album_id', 
-        'user_id'
+        'user_id',
+        'likes_count'
     ];
 
 

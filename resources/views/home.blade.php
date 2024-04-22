@@ -25,7 +25,9 @@
                                         <div class="post-footer">
                                             <div class="button-footer">
                                                 <a class="btn btn-default btn-xs ic" href="#{{ $post->id }}" data-toggle="modal"><i class="fa fa-comment"></i></a>
-                                                <span class="btn btn-default btn-xs no" href="#">{{ $post->comments->count() }}</span>
+                                                <span class="btn btn-default btn-xs no" href="#">
+                                                    {{ $post->comments->count() }}
+                                                </span>
 
                                                 <form action="{{ route('posts.like', $post->id) }}" class="btn btn-default btn-xs up" method="POST">
                                                     @csrf

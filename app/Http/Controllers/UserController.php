@@ -37,4 +37,25 @@ class UserController extends Controller
 
         return redirect()->route('adminHome')->with('success', 'User deleted successfully');
     }
+
+    public function edit()
+    {
+        $user = auth()->user();
+        return view('userEdit', compact('user'));
+    }
+
+    public function updated(Request $request)
+    {
+        $user = auth()->user();
+    
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'address' => 'required|string|max:255',
+        ]);
+    
+        $user->update($validatedData);
+    
+        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
+    }    
 }

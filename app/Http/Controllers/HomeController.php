@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,6 @@ class HomeController extends Controller
     {
         $posts = Post::all();
         return view('home')->with('posts', $posts);
-
-        // compact('galleries')
     }
 
     public function profile()
@@ -44,4 +43,18 @@ class HomeController extends Controller
         }
         return redirect('home')->with('success', 'Post deleted successfully.');
     }
+
+    // public function likeCount()
+    // {
+    //     // Mendapatkan total likes dari stored procedure
+    //     $likes = DB::select('CALL CalculateLikes()');
+
+    //     // Format hasil dari stored procedure agar sesuai dengan struktur yang diharapkan dalam view
+    //     $likesCounts = [];
+    //     foreach ($likes as $like) {
+    //         $likesCounts[$like->post_id] = $like->total_likes;
+    //     }
+
+    //     return view('home', compact('likesCounts'));
+    // }
 }
